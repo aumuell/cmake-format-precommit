@@ -37,3 +37,14 @@ configuration that sources from pypi.org.
 .. __: https://github.com/cheshirekow/cmake_format/pull/44
 .. __: https://github.com/aharrison24/cmake-format-pre-commit.git
 .. __: https://github.com/asottile
+
+-----
+Notes
+-----
+
+The bundled ``cmakelang 0.6.13`` lexer uses ``re.Scanner`` with capturing
+groups, which ``re.Scanner`` no longer accepts on Python 3.15. This
+repository ships a small compatibility shim (``cmake_format_compat``)
+that installs a drop-in ``re.Scanner`` replacement and overrides the
+``cmake-format`` and ``cmake-lint`` entry points, so the hooks work on
+Python 3.15 and earlier versions alike.
